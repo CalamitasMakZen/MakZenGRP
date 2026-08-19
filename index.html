@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MakZen GRP</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #08090d;
+    --panel: #101218;
+    --panel2: #151821;
+    --border: #252936;
+    --text: #f5f5f5;
+    --muted: #8f94a3;
+    --accent: #8b5cf6;
+    --accent2: #a78bfa;
+    --danger: #ef4444;
+    --success: #22c55e;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top right, rgba(139,92,246,.15), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(99,102,241,.08), transparent 30%),
+        var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* LOGIN */
+
+.login-screen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(16,18,24,.95);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 20px 70px rgba(0,0,0,.5);
+}
+
+.logo-login {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.login-box h1 {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.login-box p {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 28px;
+}
+
+.input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 14px;
+    background: #0b0d12;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: white;
+    outline: none;
+}
+
+.input:focus {
+    border-color: var(--accent);
+}
+
+button {
+    border: 0;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 13px 18px;
+    color: white;
+    font-weight: bold;
+    transition: .2s;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+.btn-primary {
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent), #6366f1);
+}
+
+.error {
+    color: #f87171;
+    text-align: center;
+    margin-top: 15px;
+    display: none;
+}
+
+/* SITE */
+
+.site {
+    display: none;
+}
+
+header {
+    height: 72px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,9,13,.9);
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: bold;
+}
+
+.brand img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+nav {
+    display: flex;
+    gap: 6px;
+}
+
+nav button {
+    background: transparent;
+    color: var(--muted);
+}
+
+nav button:hover,
+nav button.active {
+    color: white;
+    background: var(--panel2);
+}
+
+.vip-btn {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+}
+
+.logout-btn {
+    background: #242733;
+}
+
+/* CONTENT */
+
+.container {
+    width: min(1200px, 92%);
+    margin: 40px auto;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.hero {
+    min-height: 400px;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    background:
+        linear-gradient(90deg, rgba(8,9,13,.95), rgba(8,9,13,.55)),
+        url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 55px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 70px);
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #c3c5ce;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.discord-btn {
+    display: inline-block;
+    padding: 14px 22px;
+    background: #5865F2;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* TITLES */
+
+.section-title {
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+}
+
+.section-title p {
+    color: var(--muted);
+    margin-top: 7px;
+}
+
+/* RANKING */
+
+.ranking {
+    display: grid;
+    gap: 12px;
+}
+
+.rank-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 18px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.rank-number {
+    width: 45px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    background: var(--panel2);
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.rank-name {
+    flex: 1;
+}
+
+.rank-points {
+    color: var(--accent2);
+    font-weight: bold;
+}
+
+/* EVENTS */
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.event-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 23px;
+}
+
+.event-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.event-card h3 {
+    margin-bottom: 8px;
+}
+
+.event-card p {
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.event-time {
+    color: var(--accent2);
+    font-weight: bold;
+    margin-top: 18px;
+}
+
+.status {
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 12px;
+    background: rgba(34,197,94,.15);
+    color: #4ade80;
+    height: fit-content;
+}
+
+/* ADMIN */
+
+.admin-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.admin-box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 25px;
+}
+
+.admin-box h3 {
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.form-grid .full {
+    grid-column: 1 / -1;
+}
+
+.admin-event {
+    border: 1px solid var(--border);
+    background: var(--panel2);
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+}
+
+.admin-event-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-small {
+    padding: 8px 12px;
+    background: var(--danger);
+}
+
+.btn-save {
+    background: var(--success);
+}
+
+.btn-secondary {
+    background: #2b2f3a;
+}
+
+/* VIP LOGIN */
+
+.vip-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+}
+
+.vip-modal.active {
+    display: flex;
+}
+
+.vip-box {
+    width: 100%;
+    max-width: 420px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.vip-box h2 {
+    margin-bottom: 10px;
+}
+
+.vip-box p {
+    color: var(--muted);
+    margin-bottom: 22px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+
+    header {
+        padding: 0 15px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        padding: 30px;
+    }
+
+    .event-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid .full {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .header-left .brand span {
+        display: none;
+    }
+
+    .hero {
+        min-height: 450px;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .login-box {
+        padding: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<section class="login-screen" id="loginScreen">
+
+    <div class="login-box">
+
+        <img
+            id="loginLogo"
+            class="logo-login"
+            src="https://cdn.discordapp.com/embed/avatars/0.png"
+        >
+
+        <h1>MakZen GRP</h1>
+
+        <p>Entre para acessar o servidor</p>
+
+        <input
+            class="input"
+            id="loginUser"
+            type="text"
+            placeholder="Login"
+        >
+
+        <input
+            class="input"
+            id="loginPassword"
+            type="password"
+            placeholder="Senha"
+        >
+
+        <button
+            class="btn-primary"
+            onclick="login()"
+        >
+            Entrar
+        </button>
+
+        <div class="error" id="loginError">
+            Login ou senha incorretos.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SITE -->
+
+<div class="site" id="site">
+
+<header>
+
+    <div class="header-left">
+
+        <div class="brand">
+
+            <img
+                id="headerLogo"
+                src="https://cdn.discordapp.com/embed/avatars/0.png"
+            >
+
+            <span>MakZen GRP</span>
+
+        </div>
+
+        <nav>
+
+            <button
+                class="active"
+                onclick="showPage('home', this)"
+            >
+                Página Inicial
+            </button>
+
+            <button
+                onclick="showPage('ranking', this)"
+            >
+                Top Semanal
+            </button>
+
+            <button
+                onclick="showPage('events', this)"
+            >
+                Eventos
+            </button>
+
+        </nav>
+
+    </div>
+
+    <div class="header-right">
+
+        <button
+            class="vip-btn"
+            onclick="openVip()"
+        >
+            👑 Painel VIP
+        </button>
+
+        <button
+            class="logout-btn"
+            onclick="logout()"
+        >
+            Sair
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <!-- HOME -->
+
+    <section
+        class="page active"
+        id="home"
+    >
+
+        <div class="hero">
+
+            <div class="hero-content">
+
+                <h1 id="heroTitle">
+                    MakZen GRP
+                </h1>
+
+                <p>
+                    Entre para nossa comunidade de RP,
+                    participe dos eventos e dispute o
+                    topo do ranking.
+                </p>
+
+                <a
+                    id="discordLink"
+                    class="discord-btn"
+                    href="https://discord.gg/"
+                    target="_blank"
+                >
+                    Entrar no Discord
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RANKING -->
+
+    <section
+        class="page"
+        id="ranking"
+    >
+
+        <div class="section-title">
+
+            <h2>🏆 Top Semanal</h2>
+
+            <p>
+                Os melhores jogadores da semana.
+            </p>
+
+        </div>
+
+        <div
+            class="ranking"
+            id="weeklyRanking"
+        ></div>
+
+
+        <br><br>
+
+
+        <div class="section-title">
+
+            <h2>🌎 Top Global</h2>
+
+            <p>
+                Ranking geral do servidor.
+            </p>
+
+        </div>
+
+        <div
+            class="ranking"
+            id="globalRanking"
+        ></div>
+
+    </section>
+
+
+    <!-- EVENTOS -->
+
+    <section
+        class="page"
+        id="events"
+    >
+
+        <div class="section-title">
+
+            <h2>📅 Eventos</h2>
+
+            <p>
+                Horários convertidos para o seu fuso horário.
+            </p>
+
+        </div>
+
+        <div style="margin-bottom:20px;">
+
+            <select
+                class="input"
+                id="timezoneSelect"
+                onchange="renderEvents()"
+            >
+
+                <option value="America/Sao_Paulo">
+                    Brasil — Brasília
+                </option>
+
+                <option value="America/New_York">
+                    Estados Unidos — Nova York
+                </option>
+
+                <option value="America/Los_Angeles">
+                    Estados Unidos — Los Angeles
+                </option>
+
+                <option value="Europe/Lisbon">
+                    Portugal — Lisboa
+                </option>
+
+                <option value="Europe/London">
+                    Reino Unido — Londres
+                </option>
+
+                <option value="Europe/Paris">
+                    França — Paris
+                </option>
+
+                <option value="Asia/Tokyo">
+                    Japão — Tóquio
+                </option>
+
+            </select>
+
+        </div>
+
+        <div
+            class="event-grid"
+            id="eventGrid"
+        ></div>
+
+    </section>
+
+
+    <!-- ADMIN -->
+
+    <section
+        class="page"
+        id="admin"
+    >
+
+        <div class="section-title">
+
+            <h2>👑 Painel VIP</h2>
+
+            <p>
+                Administração do site e dos eventos.
+            </p>
+
+        </div>
+
+
+        <div class="admin-grid">
+
+            <!-- SITE -->
+
+            <div class="admin-box">
+
+                <h3>⚙️ Configurações do site</h3>
+
+                <div class="form-grid">
+
+                    <div class="full">
+
+                        <label>
+                            Nome do servidor
+                        </label>
+
+                        <input
+                            class="input"
+                            id="adminServerName"
+                            placeholder="Nome do servidor"
+                        >
+
+                    </div>
+
+                    <div class="full">
+
+                        <label>
+                            Link do Discord
+                        </label>
+
+                        <input
+                            class="input"
+                            id="adminDiscord"
+                            placeholder="https://discord.gg/..."
+                        >
+
+                    </div>
+
+                    <div class="full">
+
+                        <label>
+                            URL da logo
+                        </label>
+
+                        <input
+                            class="input"
+                            id="adminLogo"
+                            placeholder="https://..."
+                        >
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn-save"
+                    onclick="saveSiteSettings()"
+                >
+                    Salvar configurações
+                </button>
+
+            </div>
+
+
+            <!-- RANKING -->
+
+            <div class="admin-box">
+
+                <h3>🏆 Top Global</h3>
+
+                <div class="form-grid">
+
+                    <input
+                        class="input"
+                        id="globalName"
+                        placeholder="Nome"
+                    >
+
+                    <input
+                        class="input"
+                        id="globalPoints"
+                        type="number"
+                        placeholder="Pontos"
+                    >
+
+                </div>
+
+                <button
+                    class="btn-save"
+                    onclick="addGlobalPlayer()"
+                >
+                    Adicionar jogador
+                </button>
+
+                <br><br>
+
+                <div id="adminGlobalList"></div>
+
+            </div>
+
+
+            <!-- EVENTOS -->
+
+            <div class="admin-box">
+
+                <h3>📅 Criar evento</h3>
+
+                <div class="form-grid">
+
+                    <input
+                        class="input"
+                        id="eventName"
+                        placeholder="Nome do evento"
+                    >
+
+                    <input
+                        class="input"
+                        id="eventDescription"
+                        placeholder="Descrição"
+                    >
+
+                    <input
+                        class="input"
+                        id="eventDate"
+                        type="date"
+                    >
+
+                    <input
+                        class="input"
+                        id="eventTime"
+                        type="time"
+                    >
+
+                    <select
+                        class="input"
+                        id="eventTimezone"
+                    >
+
+                        <option value="America/Sao_Paulo">
+                            Brasil — Brasília
+                        </option>
+
+                        <option value="America/New_York">
+                            Nova York
+                        </option>
+
+                        <option value="America/Los_Angeles">
+                            Los Angeles
+                        </option>
+
+                        <option value="Europe/Lisbon">
+                            Lisboa
+                        </option>
+
+                        <option value="Europe/London">
+                            Londres
+                        </option>
+
+                        <option value="Europe/Paris">
+                            Paris
+                        </option>
+
+                        <option value="Asia/Tokyo">
+                            Tóquio
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button
+                    class="btn-save"
+                    onclick="addEvent()"
+                >
+                    Criar evento
+                </button>
+
+            </div>
+
+
+            <!-- EVENTOS EXISTENTES -->
+
+            <div class="admin-box">
+
+                <h3>
+                    🔧 Administrar eventos
+                </h3>
+
+                <div id="adminEvents"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+</div>
+
+
+<!-- VIP LOGIN -->
+
+<div
+    class="vip-modal"
+    id="vipModal"
+>
+
+    <div class="vip-box">
+
+        <h2>👑 Painel VIP</h2>
+
+        <p>
+            Digite suas credenciais administrativas.
+        </p>
+
+        <input
+            class="input"
+            id="vipUser"
+            placeholder="Login"
+        >
+
+        <input
+            class="input"
+            id="vipPassword"
+            type="password"
+            placeholder="Senha VIP"
+        >
+
+        <button
+            class="btn-primary"
+            onclick="vipLogin()"
+        >
+            Acessar painel
+        </button>
+
+        <button
+            class="btn-secondary"
+            style="width:100%;margin-top:10px;"
+            onclick="closeVip()"
+        >
+            Cancelar
+        </button>
+
+        <div
+            class="error"
+            id="vipError"
+        >
+            Credenciais VIP incorretas.
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   CREDENCIAIS
+========================= */
+
+const NORMAL_LOGIN = "MakZenGRP";
+const NORMAL_PASSWORD = "MakZen2026";
+
+const VIP_LOGIN = "MakZenGRP";
+const VIP_PASSWORD = "MakZenADMGalaxy";
+
+
+/* =========================
+   DADOS INICIAIS
+========================= */
+
+const defaultData = {
+
+    serverName: "MakZen GRP",
+
+    discord:
+        "https://discord.gg/",
+
+    logo:
+        "https://cdn.discordapp.com/embed/avatars/0.png",
+
+    weeklyRanking: [
+
+        {
+            name: "MakZen",
+            points: 1250
+        },
+
+        {
+            name: "Galaxy",
+            points: 1080
+        },
+
+        {
+            name: "Ruan",
+            points: 940
+        },
+
+        {
+            name: "Shadow",
+            points: 820
+        },
+
+        {
+            name: "Ghost",
+            points: 700
+        }
+
+    ],
+
+    globalRanking: [
+
+        {
+            name: "MakZen",
+            points: 12000
+        },
+
+        {
+            name: "Galaxy",
+            points: 10900
+        },
+
+        {
+            name: "Shadow",
+            points: 9500
+        }
+
+    ],
+
+    events: [
+
+        {
+            name: "Dominação de Gangues",
+            description: "Disputa entre gangues pelo território.",
+            date: "2026-08-20",
+            time: "20:00",
+            timezone: "America/Sao_Paulo",
+            active: true
+        },
+
+        {
+            name: "Operação Policial",
+            description: "Operação especial da polícia.",
+            date: "2026-08-21",
+            time: "21:00",
+            timezone: "America/Sao_Paulo",
+            active: true
+        },
+
+        {
+            name: "Corrida Ilegal",
+            description: "Corrida pelas ruas da cidade.",
+            date: "2026-08-22",
+            time: "22:00",
+            timezone: "America/Sao_Paulo",
+            active: true
+        },
+
+        {
+            name: "Assalto ao Banco",
+            description: "Grande operação criminosa.",
+            date: "2026-08-23",
+            time: "20:30",
+            timezone: "America/Sao_Paulo",
+            active: true
+        },
+
+        {
+            name: "Guerra de Gangues",
+            description: "Evento semanal das organizações.",
+            date: "2026-08-24",
+            time: "21:30",
+            timezone: "America/Sao_Paulo",
+            active: true
+        }
+
+    ]
+
+};
+
+
+/* =========================
+   BANCO LOCAL
+========================= */
+
+let data =
+    JSON.parse(localStorage.getItem("makzenData"))
+    || defaultData;
+
+
+function saveData() {
+
+    localStorage.setItem(
+        "makzenData",
+        JSON.stringify(data)
+    );
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function login() {
+
+    const user =
+        document.getElementById("loginUser").value;
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    if (
+        user === NORMAL_LOGIN &&
+        password === NORMAL_PASSWORD
+    ) {
+
+        document.getElementById("loginScreen")
+            .style.display = "none";
+
+        document.getElementById("site")
+            .style.display = "block";
+
+        renderAll();
+
+    } else {
+
+        document.getElementById("loginError")
+            .style.display = "block";
+
+    }
+
+}
+
+
+function logout() {
+
+    location.reload();
+
+}
+
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+
+function showPage(page, button) {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(p => p.classList.remove("active"));
+
+    document
+        .getElementById(page)
+        .classList.add("active");
+
+    document
+        .querySelectorAll("nav button")
+        .forEach(b => b.classList.remove("active"));
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+}
+
+
+/* =========================
+   VIP
+========================= */
+
+function openVip() {
+
+    document
+        .getElementById("vipModal")
+        .classList.add("active");
+
+}
+
+
+function closeVip() {
+
+    document
+        .getElementById("vipModal")
+        .classList.remove("active");
+
+}
+
+
+function vipLogin() {
+
+    const user =
+        document.getElementById("vipUser").value;
+
+    const password =
+        document.getElementById("vipPassword").value;
+
+    if (
+        user === VIP_LOGIN &&
+        password === VIP_PASSWORD
+    ) {
+
+        closeVip();
+
+        showPage("admin");
+
+        renderAdmin();
+
+    } else {
+
+        document
+            .getElementById("vipError")
+            .style.display = "block";
+
+    }
+
+}
+
+
+/* =========================
+   SITE
+========================= */
+
+function renderSite() {
+
+    document.title = data.serverName;
+
+    document.getElementById("heroTitle")
+        .textContent = data.serverName;
+
+    document.getElementById("headerLogo")
+        .src = data.logo;
+
+    document.getElementById("loginLogo")
+        .src = data.logo;
+
+    document.getElementById("discordLink")
+        .href = data.discord;
+
+}
+
+
+/* =========================
+   RANKING
+========================= */
+
+function renderRanking() {
+
+    const weekly =
+        document.getElementById("weeklyRanking");
+
+    weekly.innerHTML = "";
+
+    data.weeklyRanking
+        .sort((a,b) => b.points - a.points)
+        .forEach((player, index) => {
+
+            weekly.innerHTML += `
+
+                <div class="rank-card">
+
+                    <div class="rank-number">
+                        #${index + 1}
+                    </div>
+
+                    <div class="rank-name">
+                        ${escapeHTML(player.name)}
+                    </div>
+
+                    <div class="rank-points">
+                        ${player.points} XP
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+
+    const global =
+        document.getElementById("globalRanking");
+
+    global.innerHTML = "";
+
+    data.globalRanking
+        .sort((a,b) => b.points - a.points)
+        .forEach((player, index) => {
+
+            global.innerHTML += `
+
+                <div class="rank-card">
+
+                    <div class="rank-number">
+                        #${index + 1}
+                    </div>
+
+                    <div class="rank-name">
+                        ${escapeHTML(player.name)}
+                    </div>
+
+                    <div class="rank-points">
+                        ${player.points} XP
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+}
+
+
+/* =========================
+   EVENTOS
+========================= */
+
+function convertEventDate(event, targetTimezone) {
+
+    const dateString =
+        `${event.date}T${event.time}:00`;
+
+    const baseDate =
+        new Date(
+            new Intl.DateTimeFormat(
+                "en-US",
+                {
+                    timeZone: event.timezone,
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
+                    hourCycle: "h23"
+                }
+            ).format(new Date(dateString))
+        );
+
+    const formatter =
+        new Intl.DateTimeFormat(
+            "pt-BR",
+            {
+                timeZone: targetTimezone,
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit"
+            }
+        );
+
+    return formatter.format(baseDate);
+
+}
+
+
+function renderEvents() {
+
+    const grid =
+        document.getElementById("eventGrid");
+
+    const timezone =
+        document.getElementById("timezoneSelect")
+            .value;
+
+    grid.innerHTML = "";
+
+    const activeEvents =
+        data.events.filter(event => event.active);
+
+    activeEvents.forEach(event => {
+
+        const converted =
+            convertEventDate(
+                event,
+                timezone
+            );
+
+        grid.innerHTML += `
+
+            <div class="event-card">
+
+                <div class="event-top">
+
+                    <div>
+
+                        <h3>
+                            ${escapeHTML(event.name)}
+                        </h3>
+
+                    </div>
+
+                    <span class="status">
+                        ATIVO
+                    </span>
+
+                </div>
+
+                <p>
+                    ${escapeHTML(event.description)}
+                </p>
+
+                <div class="event-time">
+
+                    🕐 ${converted}
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =========================
+   ADMIN SITE
+========================= */
+
+function renderAdmin() {
+
+    document.getElementById("adminServerName")
+        .value = data.serverName;
+
+    document.getElementById("adminDiscord")
+        .value = data.discord;
+
+    document.getElementById("adminLogo")
+        .value = data.logo;
+
+    renderAdminGlobal();
+
+    renderAdminEvents();
+
+}
+
+
+function saveSiteSettings() {
+
+    data.serverName =
+        document.getElementById("adminServerName")
+            .value;
+
+    data.discord =
+        document.getElementById("adminDiscord")
+            .value;
+
+    data.logo =
+        document.getElementById("adminLogo")
+            .value;
+
+    saveData();
+
+    renderSite();
+
+    alert("Configurações salvas!");
+
+}
+
+
+/* =========================
+   GLOBAL
+========================= */
+
+function addGlobalPlayer() {
+
+    const name =
+        document.getElementById("globalName")
+            .value.trim();
+
+    const points =
+        Number(
+            document.getElementById("globalPoints")
+                .value
+        );
+
+    if (!name || !points) {
+
+        alert("Preencha nome e pontos.");
+
+        return;
+
+    }
+
+    data.globalRanking.push({
+        name,
+        points
+    });
+
+    saveData();
+
+    document.getElementById("globalName")
+        .value = "";
+
+    document.getElementById("globalPoints")
+        .value = "";
+
+    renderAdminGlobal();
+
+    renderRanking();
+
+}
+
+
+function renderAdminGlobal() {
+
+    const container =
+        document.getElementById("adminGlobalList");
+
+    container.innerHTML = "";
+
+    data.globalRanking.forEach(
+        (player, index) => {
+
+            container.innerHTML += `
+
+                <div class="admin-event">
+
+                    <div class="admin-event-row">
+
+                        <div>
+
+                            <strong>
+                                ${escapeHTML(player.name)}
+                            </strong>
+
+                            <br>
+
+                            <small>
+                                ${player.points} XP
+                            </small>
+
+                        </div>
+
+                        <button
+                            class="btn-small"
+                            onclick="removeGlobal(${index})"
+                        >
+                            Excluir
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+function removeGlobal(index) {
+
+    data.globalRanking.splice(index, 1);
+
+    saveData();
+
+    renderAdminGlobal();
+
+    renderRanking();
+
+}
+
+
+/* =========================
+   EVENTOS ADMIN
+========================= */
+
+function addEvent() {
+
+    if (data.events.filter(e => e.active).length >= 5) {
+
+        alert(
+            "Já existem 5 eventos ativos. Desative um evento antes de criar outro."
+        );
+
+        return;
+
+    }
+
+    const name =
+        document.getElementById("eventName")
+            .value.trim();
+
+    const description =
+        document.getElementById("eventDescription")
+            .value.trim();
+
+    const date =
+        document.getElementById("eventDate")
+            .value;
+
+    const time =
+        document.getElementById("eventTime")
+            .value;
+
+    const timezone =
+        document.getElementById("eventTimezone")
+            .value;
+
+    if (
+        !name ||
+        !description ||
+        !date ||
+        !time
+    ) {
+
+        alert("Preencha todos os campos.");
+
+        return;
+
+    }
+
+    data.events.push({
+
+        name,
+        description,
+        date,
+        time,
+        timezone,
+        active: true
+
+    });
+
+    saveData();
+
+    document.getElementById("eventName")
+        .value = "";
+
+    document.getElementById("eventDescription")
+        .value = "";
+
+    document.getElementById("eventDate")
+        .value = "";
+
+    document.getElementById("eventTime")
+        .value = "";
+
+    renderAdminEvents();
+
+    renderEvents();
+
+}
+
+
+function renderAdminEvents() {
+
+    const container =
+        document.getElementById("adminEvents");
+
+    container.innerHTML = "";
+
+    data.events.forEach(
+        (event, index) => {
+
+            container.innerHTML += `
+
+                <div class="admin-event">
+
+                    <div class="admin-event-row">
+
+                        <div style="flex:1">
+
+                            <strong>
+                                ${escapeHTML(event.name)}
+                            </strong>
+
+                            <br>
+
+                            <small>
+                                ${event.date}
+                                às
+                                ${event.time}
+                            </small>
+
+                            <br>
+
+                            <small>
+                                ${event.timezone}
+                            </small>
+
+                            <br><br>
+
+                            <button
+                                class="${event.active
+                                    ? 'btn-secondary'
+                                    : 'btn-save'}"
+                                onclick="toggleEvent(${index})"
+                            >
+                                ${
+                                    event.active
+                                    ? "Desativar"
+                                    : "Ativar"
+                                }
+                            </button>
+
+                            <button
+                                class="btn-small"
+                                onclick="editEvent(${index})"
+                            >
+                                Editar
+                            </button>
+
+                        </div>
+
+                        <button
+                            class="btn-small"
+                            onclick="deleteEvent(${index})"
+                        >
+                            Excluir
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+function toggleEvent(index) {
+
+    const event =
+        data.events[index];
+
+    if (
+        !event.active &&
+        data.events.filter(e => e.active).length >= 5
+    ) {
+
+        alert(
+            "Você só pode manter no máximo 5 eventos ativos."
+        );
+
+        return;
+
+    }
+
+    event.active =
+        !event.active;
+
+    saveData();
+
+    renderAdminEvents();
+
+    renderEvents();
+
+}
+
+
+function editEvent(index) {
+
+    const event =
+        data.events[index];
+
+    const name =
+        prompt(
+            "Nome do evento:",
+            event.name
+        );
+
+    if (name === null) return;
+
+    const description =
+        prompt(
+            "Descrição:",
+            event.description
+        );
+
+    if (description === null) return;
+
+    const date =
+        prompt(
+            "Data (AAAA-MM-DD):",
+            event.date
+        );
+
+    if (date === null) return;
+
+    const time =
+        prompt(
+            "Horário:",
+            event.time
+        );
+
+    if (time === null) return;
+
+    event.name = name;
+    event.description = description;
+    event.date = date;
+    event.time = time;
+
+    saveData();
+
+    renderAdminEvents();
+
+    renderEvents();
+
+}
+
+
+function deleteEvent(index) {
+
+    if (
+        !confirm(
+            "Deseja realmente excluir este evento?"
+        )
+    ) {
+        return;
+    }
+
+    data.events.splice(index, 1);
+
+    saveData();
+
+    renderAdminEvents();
+
+    renderEvents();
+
+}
+
+
+/* =========================
+   SEGURANÇA BÁSICA HTML
+========================= */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+/* =========================
+   RENDER GERAL
+========================= */
+
+function renderAll() {
+
+    renderSite();
+
+    renderRanking();
+
+    renderEvents();
+
+}
+
+
+/* =========================
+   ENTER NO LOGIN
+========================= */
+
+document
+    .getElementById("loginPassword")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+                login();
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
