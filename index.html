@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MakZen GRP</title>
 
 <style>
+
 * {
     margin: 0;
     padding: 0;
@@ -16,9 +18,9 @@
     --bg: #08090d;
     --panel: #101218;
     --panel2: #151821;
-    --border: #252936;
+    --border: #292d36;
     --text: #f5f5f5;
-    --muted: #8f94a3;
+    --muted: #9da3ae;
     --accent: #8b5cf6;
     --accent2: #a78bfa;
     --danger: #ef4444;
@@ -35,53 +37,56 @@ body {
     min-height: 100vh;
 }
 
-/* LOGIN */
+/* =========================
+   LOGIN
+========================= */
 
-.login-screen {
+#loginScreen {
     min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     padding: 20px;
 }
 
 .login-box {
     width: 100%;
     max-width: 420px;
-    background: rgba(16,18,24,.95);
+    background: rgba(16,18,24,.96);
     border: 1px solid var(--border);
     border-radius: 20px;
     padding: 35px;
-    box-shadow: 0 20px 70px rgba(0,0,0,.5);
+    box-shadow: 0 25px 80px rgba(0,0,0,.45);
+    text-align: center;
 }
 
-.logo-login {
-    width: 90px;
-    height: 90px;
+.login-discord-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 22px;
     object-fit: cover;
-    border-radius: 20px;
-    display: block;
-    margin: 0 auto 20px;
+    margin-bottom: 20px;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 30px rgba(139,92,246,.25);
 }
 
 .login-box h1 {
-    text-align: center;
+    font-size: 30px;
     margin-bottom: 8px;
 }
 
 .login-box p {
-    text-align: center;
     color: var(--muted);
-    margin-bottom: 28px;
+    margin-bottom: 25px;
 }
 
 .input {
     width: 100%;
     padding: 14px;
-    margin-bottom: 14px;
-    background: #0b0d12;
-    border: 1px solid var(--border);
+    margin-bottom: 12px;
     border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #0b0d12;
     color: white;
     outline: none;
 }
@@ -90,82 +95,89 @@ body {
     border-color: var(--accent);
 }
 
-button {
-    border: 0;
-    cursor: pointer;
+.btn {
+    border: none;
     border-radius: 10px;
     padding: 13px 18px;
-    color: white;
+    cursor: pointer;
     font-weight: bold;
     transition: .2s;
 }
 
-button:hover {
+.btn:hover {
     transform: translateY(-1px);
-    filter: brightness(1.1);
 }
 
 .btn-primary {
+    background: var(--accent);
+    color: white;
     width: 100%;
-    background: linear-gradient(135deg, var(--accent), #6366f1);
+}
+
+.btn-primary:hover {
+    background: var(--accent2);
 }
 
 .error {
     color: #f87171;
-    text-align: center;
-    margin-top: 15px;
+    margin-top: 12px;
     display: none;
 }
 
-/* SITE */
+/* =========================
+   SITE
+========================= */
 
-.site {
+#site {
     display: none;
 }
 
 header {
-    height: 72px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(8,9,13,.9);
-    backdrop-filter: blur(15px);
+    height: 75px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 35px;
+    padding: 0 25px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,9,13,.9);
+    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
-    z-index: 20;
-}
-
-.header-left,
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 18px;
+    z-index: 100;
 }
 
 .brand {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-weight: bold;
 }
 
 .brand img {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
     object-fit: cover;
+}
+
+.brand span {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 nav {
     display: flex;
-    gap: 6px;
+    align-items: center;
+    gap: 8px;
 }
 
 nav button {
     background: transparent;
+    border: none;
     color: var(--muted);
+    padding: 10px 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 nav button:hover,
@@ -174,19 +186,14 @@ nav button.active {
     background: var(--panel2);
 }
 
-.vip-btn {
-    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+.vip-button {
+    color: #fbbf24 !important;
 }
 
-.logout-btn {
-    background: #242733;
-}
-
-/* CONTENT */
-
-.container {
-    width: min(1200px, 92%);
-    margin: 40px auto;
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
 }
 
 .page {
@@ -197,89 +204,96 @@ nav button.active {
     display: block;
 }
 
+/* =========================
+   HOME
+========================= */
+
 .hero {
-    min-height: 400px;
-    border: 1px solid var(--border);
-    border-radius: 25px;
-    background:
-        linear-gradient(90deg, rgba(8,9,13,.95), rgba(8,9,13,.55)),
-        url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    padding: 55px;
+    text-align: center;
+    padding: 70px 20px;
 }
 
-.hero-content {
-    max-width: 600px;
+.hero img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 30px;
+    margin-bottom: 25px;
+    border: 2px solid var(--accent);
 }
 
 .hero h1 {
-    font-size: clamp(38px, 6vw, 70px);
+    font-size: 48px;
     margin-bottom: 15px;
 }
 
 .hero p {
-    color: #c3c5ce;
-    line-height: 1.7;
-    margin-bottom: 25px;
+    color: var(--muted);
+    font-size: 18px;
+    margin-bottom: 30px;
 }
 
-.discord-btn {
+.discord-button {
     display: inline-block;
-    padding: 14px 22px;
     background: #5865F2;
-    border-radius: 10px;
     color: white;
     text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 12px;
     font-weight: bold;
 }
 
-/* TITLES */
+.discord-button:hover {
+    opacity: .9;
+}
+
+/* =========================
+   TITLES
+========================= */
 
 .section-title {
     margin-bottom: 25px;
 }
 
 .section-title h2 {
-    font-size: 32px;
+    font-size: 30px;
+    margin-bottom: 8px;
 }
 
 .section-title p {
     color: var(--muted);
-    margin-top: 7px;
 }
 
-/* RANKING */
+/* =========================
+   GLOBAL
+========================= */
 
 .ranking {
-    display: grid;
-    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .rank-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 18px;
-    border-radius: 14px;
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 15px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 12px;
 }
 
 .rank-number {
     width: 45px;
-    height: 45px;
-    display: grid;
-    place-items: center;
-    background: var(--panel2);
-    border-radius: 12px;
+    font-size: 20px;
     font-weight: bold;
+    text-align: center;
 }
 
 .rank-name {
     flex: 1;
+    font-weight: bold;
 }
 
 .rank-points {
@@ -287,393 +301,392 @@ nav button.active {
     font-weight: bold;
 }
 
-/* EVENTS */
+/* =========================
+   EVENTS
+========================= */
 
-.event-grid {
+.events {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
 }
 
 .event-card {
     background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 23px;
-}
-
-.event-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    border-radius: 14px;
+    padding: 20px;
 }
 
 .event-card h3 {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .event-card p {
     color: var(--muted);
-    line-height: 1.5;
+    margin-bottom: 8px;
 }
 
 .event-time {
-    color: var(--accent2);
+    color: var(--accent2) !important;
     font-weight: bold;
-    margin-top: 18px;
 }
 
-.status {
-    padding: 5px 9px;
-    border-radius: 20px;
-    font-size: 12px;
-    background: rgba(34,197,94,.15);
-    color: #4ade80;
-    height: fit-content;
-}
+/* =========================
+   VIP
+========================= */
 
-/* ADMIN */
-
-.admin-grid {
-    display: grid;
-    gap: 20px;
-}
-
-.admin-box {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 25px;
-}
-
-.admin-box h3 {
-    margin-bottom: 20px;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
-
-.form-grid .full {
-    grid-column: 1 / -1;
-}
-
-.admin-event {
-    border: 1px solid var(--border);
-    background: var(--panel2);
-    padding: 18px;
-    border-radius: 14px;
-    margin-bottom: 12px;
-}
-
-.admin-event-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-}
-
-.btn-small {
-    padding: 8px 12px;
-    background: var(--danger);
-}
-
-.btn-save {
-    background: var(--success);
-}
-
-.btn-secondary {
-    background: #2b2f3a;
-}
-
-/* VIP LOGIN */
-
-.vip-modal {
+.modal {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,.75);
     display: none;
     align-items: center;
     justify-content: center;
-    z-index: 100;
     padding: 20px;
+    z-index: 1000;
 }
 
-.vip-modal.active {
+.modal.active {
     display: flex;
 }
 
-.vip-box {
+.modal-box {
     width: 100%;
-    max-width: 420px;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
     background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 30px;
+    border-radius: 18px;
+    padding: 25px;
 }
 
-.vip-box h2 {
-    margin-bottom: 10px;
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
 }
 
-.vip-box p {
+.close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.admin-section {
+    border: 1px solid var(--border);
+    background: var(--panel2);
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 15px;
+}
+
+.admin-section h3 {
+    margin-bottom: 15px;
+}
+
+.admin-event,
+.admin-player {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+}
+
+.admin-event:last-child,
+.admin-player:last-child {
+    border-bottom: none;
+}
+
+.small-buttons {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.btn-small {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-edit {
+    background: var(--accent);
+    color: white;
+}
+
+.btn-delete {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-toggle {
+    background: #374151;
+    color: white;
+}
+
+.status-active {
+    color: var(--success);
+}
+
+.status-inactive {
+    color: var(--danger);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.form-grid .full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
     color: var(--muted);
-    margin-bottom: 22px;
+    font-size: 13px;
+    margin-bottom: 5px;
 }
 
-/* RESPONSIVE */
+.admin-note {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 8px;
+}
 
-@media (max-width: 850px) {
+.logout {
+    background: #2a1010 !important;
+    color: #f87171 !important;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
 
     header {
-        padding: 0 15px;
+        height: auto;
+        padding: 15px;
+        flex-direction: column;
+        gap: 12px;
     }
 
     nav {
-        display: none;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    .hero {
-        padding: 30px;
-    }
-
-    .event-grid {
-        grid-template-columns: 1fr;
+    .hero h1 {
+        font-size: 36px;
     }
 
     .form-grid {
         grid-template-columns: 1fr;
     }
 
-    .form-grid .full {
-        grid-column: auto;
-    }
 }
 
-@media (max-width: 500px) {
-
-    .header-left .brand span {
-        display: none;
-    }
-
-    .hero {
-        min-height: 450px;
-    }
-
-    .container {
-        width: 94%;
-    }
-
-    .login-box {
-        padding: 25px;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<!-- =========================
+     LOGIN
+========================= -->
 
-<section class="login-screen" id="loginScreen">
+<div id="loginScreen">
 
     <div class="login-box">
 
         <img
-            id="loginLogo"
-            class="logo-login"
-            src="https://cdn.discordapp.com/embed/avatars/0.png"
+            id="loginDiscordIcon"
+            class="login-discord-icon"
+            src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png"
+            alt="Discord"
         >
 
         <h1>MakZen GRP</h1>
 
-        <p>Entre para acessar o servidor</p>
+        <p>Acesse o portal do servidor</p>
 
         <input
-            class="input"
             id="loginUser"
+            class="input"
             type="text"
             placeholder="Login"
         >
 
         <input
-            class="input"
             id="loginPassword"
+            class="input"
             type="password"
             placeholder="Senha"
         >
 
         <button
-            class="btn-primary"
-            onclick="login()"
+            class="btn btn-primary"
+            onclick="normalLogin()"
         >
             Entrar
         </button>
 
-        <div class="error" id="loginError">
+        <div
+            id="loginError"
+            class="error"
+        >
             Login ou senha incorretos.
         </div>
 
     </div>
 
-</section>
+</div>
 
 
-<!-- SITE -->
+<!-- =========================
+     SITE
+========================= -->
 
-<div class="site" id="site">
+<div id="site">
 
 <header>
 
-    <div class="header-left">
+    <div class="brand">
 
-        <div class="brand">
+        <img
+            id="siteLogo"
+            src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png"
+            alt="Logo"
+        >
 
-            <img
-                id="headerLogo"
-                src="https://cdn.discordapp.com/embed/avatars/0.png"
-            >
-
-            <span>MakZen GRP</span>
-
-        </div>
-
-        <nav>
-
-            <button
-                class="active"
-                onclick="showPage('home', this)"
-            >
-                Página Inicial
-            </button>
-
-            <button
-                onclick="showPage('ranking', this)"
-            >
-                Top Semanal
-            </button>
-
-            <button
-                onclick="showPage('events', this)"
-            >
-                Eventos
-            </button>
-
-        </nav>
+        <span>MakZen GRP</span>
 
     </div>
 
-    <div class="header-right">
+    <nav>
 
         <button
-            class="vip-btn"
-            onclick="openVip()"
+            class="active"
+            onclick="showPage('home', this)"
+        >
+            Página Inicial
+        </button>
+
+        <button
+            onclick="showPage('global', this)"
+        >
+            🏆 Global
+        </button>
+
+        <button
+            onclick="showPage('events', this)"
+        >
+            📅 Eventos
+        </button>
+
+        <button
+            class="vip-button"
+            onclick="openVipLogin()"
         >
             👑 Painel VIP
         </button>
 
         <button
-            class="logout-btn"
+            class="logout"
             onclick="logout()"
         >
             Sair
         </button>
 
-    </div>
+    </nav>
 
 </header>
 
 
-<main class="container">
+<main>
 
-    <!-- HOME -->
+    <!-- =========================
+         HOME
+    ========================= -->
 
     <section
-        class="page active"
         id="home"
+        class="page active"
     >
 
         <div class="hero">
 
-            <div class="hero-content">
+            <img
+                id="heroLogo"
+                src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png"
+                alt="Logo"
+            >
 
-                <h1 id="heroTitle">
-                    MakZen GRP
-                </h1>
+            <h1>MakZen GRP</h1>
 
-                <p>
-                    Entre para nossa comunidade de RP,
-                    participe dos eventos e dispute o
-                    topo do ranking.
-                </p>
+            <p>
+                Bem-vindo ao portal oficial do servidor.
+            </p>
 
-                <a
-                    id="discordLink"
-                    class="discord-btn"
-                    href="https://discord.gg/"
-                    target="_blank"
-                >
-                    Entrar no Discord
-                </a>
-
-            </div>
+            <a
+                id="discordLink"
+                class="discord-button"
+                href="https://discord.gg/"
+                target="_blank"
+            >
+                🎮 Entrar no Discord
+            </a>
 
         </div>
 
     </section>
 
 
-    <!-- RANKING -->
+    <!-- =========================
+         GLOBAL
+    ========================= -->
 
     <section
+        id="global"
         class="page"
-        id="ranking"
     >
 
         <div class="section-title">
 
-            <h2>🏆 Top Semanal</h2>
+            <h2>🏆 Global</h2>
 
             <p>
-                Os melhores jogadores da semana.
+                Ranking dos melhores jogadores do servidor.
             </p>
 
         </div>
 
         <div
-            class="ranking"
-            id="weeklyRanking"
-        ></div>
-
-
-        <br><br>
-
-
-        <div class="section-title">
-
-            <h2>🌎 Top Global</h2>
-
-            <p>
-                Ranking geral do servidor.
-            </p>
-
-        </div>
-
-        <div
-            class="ranking"
             id="globalRanking"
+            class="ranking"
         ></div>
 
     </section>
 
 
-    <!-- EVENTOS -->
+    <!-- =========================
+         EVENTS
+    ========================= -->
 
     <section
-        class="page"
         id="events"
+        class="page"
     >
 
         <div class="section-title">
@@ -681,213 +694,219 @@ nav button.active {
             <h2>📅 Eventos</h2>
 
             <p>
-                Horários convertidos para o seu fuso horário.
+                Confira os próximos eventos do servidor.
             </p>
-
-        </div>
-
-        <div style="margin-bottom:20px;">
-
-            <select
-                class="input"
-                id="timezoneSelect"
-                onchange="renderEvents()"
-            >
-
-                <option value="America/Sao_Paulo">
-                    Brasil — Brasília
-                </option>
-
-                <option value="America/New_York">
-                    Estados Unidos — Nova York
-                </option>
-
-                <option value="America/Los_Angeles">
-                    Estados Unidos — Los Angeles
-                </option>
-
-                <option value="Europe/Lisbon">
-                    Portugal — Lisboa
-                </option>
-
-                <option value="Europe/London">
-                    Reino Unido — Londres
-                </option>
-
-                <option value="Europe/Paris">
-                    França — Paris
-                </option>
-
-                <option value="Asia/Tokyo">
-                    Japão — Tóquio
-                </option>
-
-            </select>
 
         </div>
 
         <div
-            class="event-grid"
-            id="eventGrid"
+            id="eventsContainer"
+            class="events"
         ></div>
 
     </section>
 
+</main>
 
-    <!-- ADMIN -->
+</div>
 
-    <section
-        class="page"
-        id="admin"
-    >
 
-        <div class="section-title">
+<!-- =========================
+     LOGIN VIP
+========================= -->
+
+<div
+    id="vipLoginModal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
 
             <h2>👑 Painel VIP</h2>
 
-            <p>
-                Administração do site e dos eventos.
-            </p>
+            <button
+                class="close"
+                onclick="closeVipLogin()"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <input
+            id="vipUser"
+            class="input"
+            placeholder="Login VIP"
+        >
+
+        <input
+            id="vipPassword"
+            class="input"
+            type="password"
+            placeholder="Senha VIP"
+        >
+
+        <button
+            class="btn btn-primary"
+            onclick="vipLogin()"
+        >
+            Entrar no Painel
+        </button>
+
+        <div
+            id="vipError"
+            class="error"
+        >
+            Login VIP ou senha incorretos.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     PAINEL VIP
+========================= -->
+
+<div
+    id="vipPanelModal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>👑 Administração VIP</h2>
+
+            <button
+                class="close"
+                onclick="closeVipPanel()"
+            >
+                ×
+            </button>
 
         </div>
 
 
-        <div class="admin-grid">
+        <!-- CONFIGURAÇÕES -->
 
-            <!-- SITE -->
+        <div class="admin-section">
 
-            <div class="admin-box">
+            <h3>⚙️ Configurações do site</h3>
 
-                <h3>⚙️ Configurações do site</h3>
+            <label>Link do Discord</label>
 
-                <div class="form-grid">
-
-                    <div class="full">
-
-                        <label>
-                            Nome do servidor
-                        </label>
-
-                        <input
-                            class="input"
-                            id="adminServerName"
-                            placeholder="Nome do servidor"
-                        >
-
-                    </div>
-
-                    <div class="full">
-
-                        <label>
-                            Link do Discord
-                        </label>
-
-                        <input
-                            class="input"
-                            id="adminDiscord"
-                            placeholder="https://discord.gg/..."
-                        >
-
-                    </div>
-
-                    <div class="full">
-
-                        <label>
-                            URL da logo
-                        </label>
-
-                        <input
-                            class="input"
-                            id="adminLogo"
-                            placeholder="https://..."
-                        >
-
-                    </div>
-
-                </div>
-
-                <button
-                    class="btn-save"
-                    onclick="saveSiteSettings()"
-                >
-                    Salvar configurações
-                </button>
-
-            </div>
+            <input
+                id="adminDiscordLink"
+                class="input"
+                placeholder="https://discord.gg/seulink"
+            >
 
 
-            <!-- RANKING -->
+            <label>URL da Logo</label>
 
-            <div class="admin-box">
+            <input
+                id="adminLogo"
+                class="input"
+                placeholder="URL da imagem da logo"
+            >
 
-                <h3>🏆 Top Global</h3>
 
-                <div class="form-grid">
+            <label>Ícone do Discord na tela de login</label>
+
+            <input
+                id="adminDiscordIcon"
+                class="input"
+                placeholder="URL da imagem do ícone"
+            >
+
+            <p class="admin-note">
+                Você pode colocar o endereço de uma imagem PNG ou JPG.
+                Esse ícone aparecerá na tela de login.
+            </p>
+
+
+            <button
+                class="btn btn-primary"
+                onclick="saveSettings()"
+            >
+                Salvar configurações
+            </button>
+
+        </div>
+
+
+        <!-- EVENTOS -->
+
+        <div class="admin-section">
+
+            <h3>📅 Criar evento</h3>
+
+            <div class="form-grid">
+
+                <div class="full">
+
+                    <label>Nome do evento</label>
 
                     <input
-                        class="input"
-                        id="globalName"
-                        placeholder="Nome"
-                    >
-
-                    <input
-                        class="input"
-                        id="globalPoints"
-                        type="number"
-                        placeholder="Pontos"
-                    >
-
-                </div>
-
-                <button
-                    class="btn-save"
-                    onclick="addGlobalPlayer()"
-                >
-                    Adicionar jogador
-                </button>
-
-                <br><br>
-
-                <div id="adminGlobalList"></div>
-
-            </div>
-
-
-            <!-- EVENTOS -->
-
-            <div class="admin-box">
-
-                <h3>📅 Criar evento</h3>
-
-                <div class="form-grid">
-
-                    <input
-                        class="input"
                         id="eventName"
-                        placeholder="Nome do evento"
+                        class="input"
+                        placeholder="Ex: Guerra de Gangues"
                     >
 
+                </div>
+
+
+                <div class="full">
+
+                    <label>Descrição</label>
+
                     <input
-                        class="input"
                         id="eventDescription"
-                        placeholder="Descrição"
+                        class="input"
+                        placeholder="Descrição do evento"
                     >
 
+                </div>
+
+
+                <div>
+
+                    <label>Data</label>
+
                     <input
-                        class="input"
                         id="eventDate"
+                        class="input"
                         type="date"
                     >
 
+                </div>
+
+
+                <div>
+
+                    <label>Horário</label>
+
                     <input
-                        class="input"
                         id="eventTime"
+                        class="input"
                         type="time"
                     >
 
+                </div>
+
+
+                <div class="full">
+
+                    <label>Fuso horário</label>
+
                     <select
-                        class="input"
                         id="eventTimezone"
+                        class="input"
                     >
 
                         <option value="America/Sao_Paulo">
@@ -903,7 +922,7 @@ nav button.active {
                         </option>
 
                         <option value="Europe/Lisbon">
-                            Lisboa
+                            Portugal — Lisboa
                         </option>
 
                         <option value="Europe/London">
@@ -922,85 +941,67 @@ nav button.active {
 
                 </div>
 
-                <button
-                    class="btn-save"
-                    onclick="addEvent()"
-                >
-                    Criar evento
-                </button>
-
             </div>
 
+            <button
+                class="btn btn-primary"
+                onclick="createEvent()"
+            >
+                Criar evento
+            </button>
 
-            <!-- EVENTOS EXISTENTES -->
-
-            <div class="admin-box">
-
-                <h3>
-                    🔧 Administrar eventos
-                </h3>
-
-                <div id="adminEvents"></div>
-
-            </div>
+            <p class="admin-note">
+                Máximo de 5 eventos ativos.
+            </p>
 
         </div>
 
-    </section>
 
-</main>
+        <!-- LISTA EVENTOS -->
 
-</div>
+        <div class="admin-section">
+
+            <h3>🔧 Administrar eventos</h3>
+
+            <div id="adminEvents"></div>
+
+        </div>
 
 
-<!-- VIP LOGIN -->
+        <!-- GLOBAL -->
 
-<div
-    class="vip-modal"
-    id="vipModal"
->
+        <div class="admin-section">
 
-    <div class="vip-box">
+            <h3>🏆 Administrar Global</h3>
 
-        <h2>👑 Painel VIP</h2>
+            <label>Nome do jogador</label>
 
-        <p>
-            Digite suas credenciais administrativas.
-        </p>
+            <input
+                id="playerName"
+                class="input"
+                placeholder="Nome do jogador"
+            >
 
-        <input
-            class="input"
-            id="vipUser"
-            placeholder="Login"
-        >
+            <label>Pontos</label>
 
-        <input
-            class="input"
-            id="vipPassword"
-            type="password"
-            placeholder="Senha VIP"
-        >
+            <input
+                id="playerPoints"
+                class="input"
+                type="number"
+                placeholder="Pontos"
+            >
 
-        <button
-            class="btn-primary"
-            onclick="vipLogin()"
-        >
-            Acessar painel
-        </button>
+            <button
+                class="btn btn-primary"
+                onclick="addPlayer()"
+            >
+                Adicionar jogador
+            </button>
 
-        <button
-            class="btn-secondary"
-            style="width:100%;margin-top:10px;"
-            onclick="closeVip()"
-        >
-            Cancelar
-        </button>
+            <br><br>
 
-        <div
-            class="error"
-            id="vipError"
-        >
-            Credenciais VIP incorretas.
+            <div id="adminPlayers"></div>
+
         </div>
 
     </div>
@@ -1011,55 +1012,50 @@ nav button.active {
 <script>
 
 /* =========================
-   CREDENCIAIS
-========================= */
-
-const NORMAL_LOGIN = "MakZenGRP";
-const NORMAL_PASSWORD = "MakZen2026";
-
-const VIP_LOGIN = "MakZenGRP";
-const VIP_PASSWORD = "MakZenADMGalaxy";
-
-
-/* =========================
-   DADOS INICIAIS
+   DADOS PADRÃO
 ========================= */
 
 const defaultData = {
 
-    serverName: "MakZen GRP",
-
-    discord:
+    discordLink:
         "https://discord.gg/",
 
     logo:
-        "https://cdn.discordapp.com/embed/avatars/0.png",
+        "https://cdn-icons-png.flaticon.com/512/3670/3670157.png",
 
-    weeklyRanking: [
+    discordIcon:
+        "https://cdn-icons-png.flaticon.com/512/3670/3670157.png",
+
+    events: [
 
         {
-            name: "MakZen",
-            points: 1250
+            id: 1,
+            name: "Guerra de Gangues",
+            description: "Disputa entre as organizações do servidor.",
+            date: "2026-08-25",
+            time: "20:00",
+            timezone: "America/Sao_Paulo",
+            active: true
         },
 
         {
-            name: "Galaxy",
-            points: 1080
+            id: 2,
+            name: "Corrida Ilegal",
+            description: "Grande corrida pelas ruas da cidade.",
+            date: "2026-08-26",
+            time: "21:00",
+            timezone: "America/Sao_Paulo",
+            active: true
         },
 
         {
-            name: "Ruan",
-            points: 940
-        },
-
-        {
-            name: "Shadow",
-            points: 820
-        },
-
-        {
-            name: "Ghost",
-            points: 700
+            id: 3,
+            name: "Assalto ao Banco",
+            description: "Operação especial do servidor.",
+            date: "2026-08-27",
+            time: "20:30",
+            timezone: "America/Sao_Paulo",
+            active: true
         }
 
     ],
@@ -1068,66 +1064,22 @@ const defaultData = {
 
         {
             name: "MakZen",
-            points: 12000
+            points: 1500
         },
 
         {
             name: "Galaxy",
-            points: 10900
+            points: 1200
+        },
+
+        {
+            name: "Player01",
+            points: 1000
         },
 
         {
             name: "Shadow",
-            points: 9500
-        }
-
-    ],
-
-    events: [
-
-        {
-            name: "Dominação de Gangues",
-            description: "Disputa entre gangues pelo território.",
-            date: "2026-08-20",
-            time: "20:00",
-            timezone: "America/Sao_Paulo",
-            active: true
-        },
-
-        {
-            name: "Operação Policial",
-            description: "Operação especial da polícia.",
-            date: "2026-08-21",
-            time: "21:00",
-            timezone: "America/Sao_Paulo",
-            active: true
-        },
-
-        {
-            name: "Corrida Ilegal",
-            description: "Corrida pelas ruas da cidade.",
-            date: "2026-08-22",
-            time: "22:00",
-            timezone: "America/Sao_Paulo",
-            active: true
-        },
-
-        {
-            name: "Assalto ao Banco",
-            description: "Grande operação criminosa.",
-            date: "2026-08-23",
-            time: "20:30",
-            timezone: "America/Sao_Paulo",
-            active: true
-        },
-
-        {
-            name: "Guerra de Gangues",
-            description: "Evento semanal das organizações.",
-            date: "2026-08-24",
-            time: "21:30",
-            timezone: "America/Sao_Paulo",
-            active: true
+            points: 850
         }
 
     ]
@@ -1136,7 +1088,7 @@ const defaultData = {
 
 
 /* =========================
-   BANCO LOCAL
+   CARREGAR DADOS
 ========================= */
 
 let data =
@@ -1158,7 +1110,7 @@ function saveData() {
    LOGIN
 ========================= */
 
-function login() {
+function normalLogin() {
 
     const user =
         document.getElementById("loginUser").value;
@@ -1167,22 +1119,26 @@ function login() {
         document.getElementById("loginPassword").value;
 
     if (
-        user === NORMAL_LOGIN &&
-        password === NORMAL_PASSWORD
+        user === "MakZenGRP" &&
+        password === "MakZen2026"
     ) {
 
-        document.getElementById("loginScreen")
-            .style.display = "none";
+        document.getElementById("loginScreen").style.display =
+            "none";
 
-        document.getElementById("site")
-            .style.display = "block";
+        document.getElementById("site").style.display =
+            "block";
 
-        renderAll();
+        applySettings();
+
+        renderGlobal();
+
+        renderEvents();
 
     } else {
 
-        document.getElementById("loginError")
-            .style.display = "block";
+        document.getElementById("loginError").style.display =
+            "block";
 
     }
 
@@ -1210,34 +1166,37 @@ function showPage(page, button) {
         .getElementById(page)
         .classList.add("active");
 
+
     document
         .querySelectorAll("nav button")
         .forEach(b => b.classList.remove("active"));
 
     if (button) {
+
         button.classList.add("active");
+
     }
 
 }
 
 
 /* =========================
-   VIP
+   VIP LOGIN
 ========================= */
 
-function openVip() {
+function openVipLogin() {
 
     document
-        .getElementById("vipModal")
+        .getElementById("vipLoginModal")
         .classList.add("active");
 
 }
 
 
-function closeVip() {
+function closeVipLogin() {
 
     document
-        .getElementById("vipModal")
+        .getElementById("vipLoginModal")
         .classList.remove("active");
 
 }
@@ -1251,16 +1210,15 @@ function vipLogin() {
     const password =
         document.getElementById("vipPassword").value;
 
+
     if (
-        user === VIP_LOGIN &&
-        password === VIP_PASSWORD
+        user === "MakZenGRP" &&
+        password === "MakZenADMGalaxy"
     ) {
 
-        closeVip();
+        closeVipLogin();
 
-        showPage("admin");
-
-        renderAdmin();
+        openVipPanel();
 
     } else {
 
@@ -1274,246 +1232,85 @@ function vipLogin() {
 
 
 /* =========================
-   SITE
+   VIP PAINEL
 ========================= */
 
-function renderSite() {
+function openVipPanel() {
 
-    document.title = data.serverName;
+    document
+        .getElementById("vipPanelModal")
+        .classList.add("active");
 
-    document.getElementById("heroTitle")
-        .textContent = data.serverName;
-
-    document.getElementById("headerLogo")
-        .src = data.logo;
-
-    document.getElementById("loginLogo")
-        .src = data.logo;
-
-    document.getElementById("discordLink")
-        .href = data.discord;
-
-}
-
-
-/* =========================
-   RANKING
-========================= */
-
-function renderRanking() {
-
-    const weekly =
-        document.getElementById("weeklyRanking");
-
-    weekly.innerHTML = "";
-
-    data.weeklyRanking
-        .sort((a,b) => b.points - a.points)
-        .forEach((player, index) => {
-
-            weekly.innerHTML += `
-
-                <div class="rank-card">
-
-                    <div class="rank-number">
-                        #${index + 1}
-                    </div>
-
-                    <div class="rank-name">
-                        ${escapeHTML(player.name)}
-                    </div>
-
-                    <div class="rank-points">
-                        ${player.points} XP
-                    </div>
-
-                </div>
-
-            `;
-
-        });
-
-
-    const global =
-        document.getElementById("globalRanking");
-
-    global.innerHTML = "";
-
-    data.globalRanking
-        .sort((a,b) => b.points - a.points)
-        .forEach((player, index) => {
-
-            global.innerHTML += `
-
-                <div class="rank-card">
-
-                    <div class="rank-number">
-                        #${index + 1}
-                    </div>
-
-                    <div class="rank-name">
-                        ${escapeHTML(player.name)}
-                    </div>
-
-                    <div class="rank-points">
-                        ${player.points} XP
-                    </div>
-
-                </div>
-
-            `;
-
-        });
-
-}
-
-
-/* =========================
-   EVENTOS
-========================= */
-
-function convertEventDate(event, targetTimezone) {
-
-    const dateString =
-        `${event.date}T${event.time}:00`;
-
-    const baseDate =
-        new Date(
-            new Intl.DateTimeFormat(
-                "en-US",
-                {
-                    timeZone: event.timezone,
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    second: "2-digit",
-                    hourCycle: "h23"
-                }
-            ).format(new Date(dateString))
-        );
-
-    const formatter =
-        new Intl.DateTimeFormat(
-            "pt-BR",
-            {
-                timeZone: targetTimezone,
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-                hour: "2-digit",
-                minute: "2-digit"
-            }
-        );
-
-    return formatter.format(baseDate);
-
-}
-
-
-function renderEvents() {
-
-    const grid =
-        document.getElementById("eventGrid");
-
-    const timezone =
-        document.getElementById("timezoneSelect")
-            .value;
-
-    grid.innerHTML = "";
-
-    const activeEvents =
-        data.events.filter(event => event.active);
-
-    activeEvents.forEach(event => {
-
-        const converted =
-            convertEventDate(
-                event,
-                timezone
-            );
-
-        grid.innerHTML += `
-
-            <div class="event-card">
-
-                <div class="event-top">
-
-                    <div>
-
-                        <h3>
-                            ${escapeHTML(event.name)}
-                        </h3>
-
-                    </div>
-
-                    <span class="status">
-                        ATIVO
-                    </span>
-
-                </div>
-
-                <p>
-                    ${escapeHTML(event.description)}
-                </p>
-
-                <div class="event-time">
-
-                    🕐 ${converted}
-
-                </div>
-
-            </div>
-
-        `;
-
-    });
-
-}
-
-
-/* =========================
-   ADMIN SITE
-========================= */
-
-function renderAdmin() {
-
-    document.getElementById("adminServerName")
-        .value = data.serverName;
-
-    document.getElementById("adminDiscord")
-        .value = data.discord;
-
-    document.getElementById("adminLogo")
-        .value = data.logo;
-
-    renderAdminGlobal();
+    loadAdminSettings();
 
     renderAdminEvents();
 
+    renderAdminPlayers();
+
 }
 
 
-function saveSiteSettings() {
+function closeVipPanel() {
 
-    data.serverName =
-        document.getElementById("adminServerName")
-            .value;
+    document
+        .getElementById("vipPanelModal")
+        .classList.remove("active");
 
-    data.discord =
-        document.getElementById("adminDiscord")
-            .value;
+}
+
+
+/* =========================
+   CONFIGURAÇÕES
+========================= */
+
+function loadAdminSettings() {
+
+    document.getElementById("adminDiscordLink").value =
+        data.discordLink;
+
+    document.getElementById("adminLogo").value =
+        data.logo;
+
+    document.getElementById("adminDiscordIcon").value =
+        data.discordIcon;
+
+}
+
+
+function saveSettings() {
+
+    data.discordLink =
+        document.getElementById("adminDiscordLink").value;
 
     data.logo =
-        document.getElementById("adminLogo")
-            .value;
+        document.getElementById("adminLogo").value;
+
+    data.discordIcon =
+        document.getElementById("adminDiscordIcon").value;
+
 
     saveData();
 
-    renderSite();
+    applySettings();
 
-    alert("Configurações salvas!");
+    alert("Configurações salvas com sucesso!");
+
+}
+
+
+function applySettings() {
+
+    document.getElementById("siteLogo").src =
+        data.logo;
+
+    document.getElementById("heroLogo").src =
+        data.logo;
+
+    document.getElementById("loginDiscordIcon").src =
+        data.discordIcon;
+
+    document.getElementById("discordLink").href =
+        data.discordLink;
 
 }
 
@@ -1522,143 +1319,186 @@ function saveSiteSettings() {
    GLOBAL
 ========================= */
 
-function addGlobalPlayer() {
-
-    const name =
-        document.getElementById("globalName")
-            .value.trim();
-
-    const points =
-        Number(
-            document.getElementById("globalPoints")
-                .value
-        );
-
-    if (!name || !points) {
-
-        alert("Preencha nome e pontos.");
-
-        return;
-
-    }
-
-    data.globalRanking.push({
-        name,
-        points
-    });
-
-    saveData();
-
-    document.getElementById("globalName")
-        .value = "";
-
-    document.getElementById("globalPoints")
-        .value = "";
-
-    renderAdminGlobal();
-
-    renderRanking();
-
-}
-
-
-function renderAdminGlobal() {
+function renderGlobal() {
 
     const container =
-        document.getElementById("adminGlobalList");
+        document.getElementById("globalRanking");
 
     container.innerHTML = "";
 
-    data.globalRanking.forEach(
-        (player, index) => {
 
-            container.innerHTML += `
-
-                <div class="admin-event">
-
-                    <div class="admin-event-row">
-
-                        <div>
-
-                            <strong>
-                                ${escapeHTML(player.name)}
-                            </strong>
-
-                            <br>
-
-                            <small>
-                                ${player.points} XP
-                            </small>
-
-                        </div>
-
-                        <button
-                            class="btn-small"
-                            onclick="removeGlobal(${index})"
-                        >
-                            Excluir
-                        </button>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        }
-    );
-
-}
+    const ranking =
+        [...data.globalRanking]
+        .sort((a,b) => b.points - a.points);
 
 
-function removeGlobal(index) {
+    ranking.forEach((player, index) => {
 
-    data.globalRanking.splice(index, 1);
+        const card =
+            document.createElement("div");
 
-    saveData();
+        card.className = "rank-card";
 
-    renderAdminGlobal();
+        card.innerHTML = `
 
-    renderRanking();
+            <div class="rank-number">
+                #${index + 1}
+            </div>
+
+            <div class="rank-name">
+                ${escapeHTML(player.name)}
+            </div>
+
+            <div class="rank-points">
+                ${player.points} XP
+            </div>
+
+        `;
+
+        container.appendChild(card);
+
+    });
 
 }
 
 
 /* =========================
-   EVENTOS ADMIN
+   ADICIONAR JOGADOR
 ========================= */
 
-function addEvent() {
+function addPlayer() {
 
-    if (data.events.filter(e => e.active).length >= 5) {
+    const name =
+        document.getElementById("playerName").value.trim();
 
-        alert(
-            "Já existem 5 eventos ativos. Desative um evento antes de criar outro."
+    const points =
+        Number(
+            document.getElementById("playerPoints").value
         );
+
+
+    if (!name || !points) {
+
+        alert("Preencha o nome e os pontos.");
 
         return;
 
     }
 
+
+    data.globalRanking.push({
+
+        name: name,
+
+        points: points
+
+    });
+
+
+    saveData();
+
+    renderGlobal();
+
+    renderAdminPlayers();
+
+
+    document.getElementById("playerName").value = "";
+
+    document.getElementById("playerPoints").value = "";
+
+}
+
+
+/* =========================
+   ADMIN GLOBAL
+========================= */
+
+function renderAdminPlayers() {
+
+    const container =
+        document.getElementById("adminPlayers");
+
+    container.innerHTML = "";
+
+
+    data.globalRanking.forEach((player, index) => {
+
+        const row =
+            document.createElement("div");
+
+        row.className = "admin-player";
+
+        row.innerHTML = `
+
+            <div>
+                <strong>${escapeHTML(player.name)}</strong>
+                <br>
+                <span class="admin-note">
+                    ${player.points} XP
+                </span>
+            </div>
+
+            <button
+                class="btn-small btn-delete"
+                onclick="deletePlayer(${index})"
+            >
+                Excluir
+            </button>
+
+        `;
+
+        container.appendChild(row);
+
+    });
+
+}
+
+
+function deletePlayer(index) {
+
+    if (
+        !confirm(
+            "Deseja excluir este jogador do Global?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    data.globalRanking.splice(index, 1);
+
+    saveData();
+
+    renderGlobal();
+
+    renderAdminPlayers();
+
+}
+
+
+/* =========================
+   EVENTOS
+========================= */
+
+function createEvent() {
+
     const name =
-        document.getElementById("eventName")
-            .value.trim();
+        document.getElementById("eventName").value.trim();
 
     const description =
-        document.getElementById("eventDescription")
-            .value.trim();
+        document.getElementById("eventDescription").value.trim();
 
     const date =
-        document.getElementById("eventDate")
-            .value;
+        document.getElementById("eventDate").value;
 
     const time =
-        document.getElementById("eventTime")
-            .value;
+        document.getElementById("eventTime").value;
 
     const timezone =
-        document.getElementById("eventTimezone")
-            .value;
+        document.getElementById("eventTimezone").value;
+
 
     if (
         !name ||
@@ -1673,37 +1513,132 @@ function addEvent() {
 
     }
 
+
+    const activeEvents =
+        data.events.filter(event => event.active);
+
+
+    if (activeEvents.length >= 5) {
+
+        alert(
+            "Você já possui 5 eventos ativos."
+        );
+
+        return;
+
+    }
+
+
     data.events.push({
 
+        id: Date.now(),
+
         name,
+
         description,
+
         date,
+
         time,
+
         timezone,
+
         active: true
 
     });
 
+
     saveData();
-
-    document.getElementById("eventName")
-        .value = "";
-
-    document.getElementById("eventDescription")
-        .value = "";
-
-    document.getElementById("eventDate")
-        .value = "";
-
-    document.getElementById("eventTime")
-        .value = "";
-
-    renderAdminEvents();
 
     renderEvents();
 
+    renderAdminEvents();
+
+
+    document.getElementById("eventName").value = "";
+
+    document.getElementById("eventDescription").value = "";
+
+    document.getElementById("eventDate").value = "";
+
+    document.getElementById("eventTime").value = "";
+
+
+    alert("Evento criado!");
+
 }
 
+
+/* =========================
+   MOSTRAR EVENTOS
+========================= */
+
+function renderEvents() {
+
+    const container =
+        document.getElementById("eventsContainer");
+
+    container.innerHTML = "";
+
+
+    const activeEvents =
+        data.events.filter(event => event.active);
+
+
+    if (activeEvents.length === 0) {
+
+        container.innerHTML = `
+            <div class="event-card">
+                <h3>Nenhum evento ativo</h3>
+                <p>
+                    No momento não existem eventos ativos.
+                </p>
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    activeEvents.forEach(event => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "event-card";
+
+        card.innerHTML = `
+
+            <h3>
+                ${escapeHTML(event.name)}
+            </h3>
+
+            <p>
+                ${escapeHTML(event.description)}
+            </p>
+
+            <p class="event-time">
+                📅 ${event.date}
+                às ${event.time}
+            </p>
+
+            <p>
+                🌎 ${timezoneName(event.timezone)}
+            </p>
+
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================
+   ADMIN EVENTOS
+========================= */
 
 function renderAdminEvents() {
 
@@ -1712,112 +1647,156 @@ function renderAdminEvents() {
 
     container.innerHTML = "";
 
-    data.events.forEach(
-        (event, index) => {
 
-            container.innerHTML += `
+    if (data.events.length === 0) {
 
-                <div class="admin-event">
-
-                    <div class="admin-event-row">
-
-                        <div style="flex:1">
-
-                            <strong>
-                                ${escapeHTML(event.name)}
-                            </strong>
-
-                            <br>
-
-                            <small>
-                                ${event.date}
-                                às
-                                ${event.time}
-                            </small>
-
-                            <br>
-
-                            <small>
-                                ${event.timezone}
-                            </small>
-
-                            <br><br>
-
-                            <button
-                                class="${event.active
-                                    ? 'btn-secondary'
-                                    : 'btn-save'}"
-                                onclick="toggleEvent(${index})"
-                            >
-                                ${
-                                    event.active
-                                    ? "Desativar"
-                                    : "Ativar"
-                                }
-                            </button>
-
-                            <button
-                                class="btn-small"
-                                onclick="editEvent(${index})"
-                            >
-                                Editar
-                            </button>
-
-                        </div>
-
-                        <button
-                            class="btn-small"
-                            onclick="deleteEvent(${index})"
-                        >
-                            Excluir
-                        </button>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        }
-    );
-
-}
-
-
-function toggleEvent(index) {
-
-    const event =
-        data.events[index];
-
-    if (
-        !event.active &&
-        data.events.filter(e => e.active).length >= 5
-    ) {
-
-        alert(
-            "Você só pode manter no máximo 5 eventos ativos."
-        );
+        container.innerHTML =
+            "<p class='admin-note'>Nenhum evento cadastrado.</p>";
 
         return;
 
     }
 
-    event.active =
-        !event.active;
 
-    saveData();
+    data.events.forEach(event => {
 
-    renderAdminEvents();
+        const row =
+            document.createElement("div");
 
-    renderEvents();
+        row.className = "admin-event";
+
+        row.innerHTML = `
+
+            <div>
+
+                <strong>
+                    ${escapeHTML(event.name)}
+                </strong>
+
+                <br>
+
+                <span class="${
+                    event.active
+                    ? "status-active"
+                    : "status-inactive"
+                }">
+
+                    ${
+                        event.active
+                        ? "● Ativo"
+                        : "● Inativo"
+                    }
+
+                </span>
+
+                <br>
+
+                <span class="admin-note">
+
+                    ${event.date}
+                    às
+                    ${event.time}
+
+                </span>
+
+            </div>
+
+
+            <div class="small-buttons">
+
+                <button
+                    class="btn-small btn-toggle"
+                    onclick="toggleEvent(${event.id})"
+                >
+                    ${
+                        event.active
+                        ? "Desativar"
+                        : "Ativar"
+                    }
+                </button>
+
+                <button
+                    class="btn-small btn-edit"
+                    onclick="editEvent(${event.id})"
+                >
+                    Editar
+                </button>
+
+                <button
+                    class="btn-small btn-delete"
+                    onclick="deleteEvent(${event.id})"
+                >
+                    Excluir
+                </button>
+
+            </div>
+
+        `;
+
+        container.appendChild(row);
+
+    });
 
 }
 
 
-function editEvent(index) {
+/* =========================
+   ATIVAR / DESATIVAR
+========================= */
+
+function toggleEvent(id) {
 
     const event =
-        data.events[index];
+        data.events.find(e => e.id === id);
+
+
+    if (!event) return;
+
+
+    if (!event.active) {
+
+        const activeEvents =
+            data.events.filter(e => e.active);
+
+
+        if (activeEvents.length >= 5) {
+
+            alert(
+                "Não é possível ter mais de 5 eventos ativos."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    event.active =
+        !event.active;
+
+
+    saveData();
+
+    renderEvents();
+
+    renderAdminEvents();
+
+}
+
+
+/* =========================
+   EDITAR EVENTO
+========================= */
+
+function editEvent(id) {
+
+    const event =
+        data.events.find(e => e.id === id);
+
+
+    if (!event) return;
+
 
     const name =
         prompt(
@@ -1825,7 +1804,9 @@ function editEvent(index) {
             event.name
         );
 
+
     if (name === null) return;
+
 
     const description =
         prompt(
@@ -1833,7 +1814,9 @@ function editEvent(index) {
             event.description
         );
 
+
     if (description === null) return;
+
 
     const date =
         prompt(
@@ -1841,7 +1824,9 @@ function editEvent(index) {
             event.date
         );
 
+
     if (date === null) return;
+
 
     const time =
         prompt(
@@ -1849,90 +1834,123 @@ function editEvent(index) {
             event.time
         );
 
+
     if (time === null) return;
 
+
     event.name = name;
+
     event.description = description;
+
     event.date = date;
+
     event.time = time;
+
 
     saveData();
 
-    renderAdminEvents();
-
     renderEvents();
+
+    renderAdminEvents();
 
 }
 
 
-function deleteEvent(index) {
+/* =========================
+   EXCLUIR EVENTO
+========================= */
+
+function deleteEvent(id) {
 
     if (
         !confirm(
-            "Deseja realmente excluir este evento?"
+            "Deseja excluir este evento?"
         )
     ) {
+
         return;
+
     }
 
-    data.events.splice(index, 1);
+
+    data.events =
+        data.events.filter(
+            event => event.id !== id
+        );
+
 
     saveData();
 
+    renderEvents();
+
     renderAdminEvents();
 
-    renderEvents();
+}
+
+
+/* =========================
+   FUSOS
+========================= */
+
+function timezoneName(timezone) {
+
+    const names = {
+
+        "America/Sao_Paulo":
+            "Brasil — Brasília",
+
+        "America/New_York":
+            "Nova York",
+
+        "America/Los_Angeles":
+            "Los Angeles",
+
+        "Europe/Lisbon":
+            "Portugal — Lisboa",
+
+        "Europe/London":
+            "Londres",
+
+        "Europe/Paris":
+            "Paris",
+
+        "Asia/Tokyo":
+            "Tóquio"
+
+    };
+
+
+    return names[timezone] || timezone;
 
 }
 
 
 /* =========================
-   SEGURANÇA BÁSICA HTML
+   SEGURANÇA HTML
 ========================= */
 
-function escapeHTML(value) {
+function escapeHTML(text) {
 
-    return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+    return String(text)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
 
 }
 
 
 /* =========================
-   RENDER GERAL
+   INICIALIZAÇÃO
 ========================= */
 
-function renderAll() {
-
-    renderSite();
-
-    renderRanking();
-
-    renderEvents();
-
-}
-
-
-/* =========================
-   ENTER NO LOGIN
-========================= */
-
-document
-    .getElementById("loginPassword")
-    .addEventListener(
-        "keydown",
-        function(event) {
-
-            if (event.key === "Enter") {
-                login();
-            }
-
-        }
-    );
+applySettings();
 
 </script>
 
