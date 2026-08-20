@@ -62,8 +62,8 @@ main{max-width:1100px;margin:auto;padding:40px 20px}.page{display:none}.page.act
   <div class="hero">
     <img id="heroLogo" src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="Logo">
     <h1>MakZen GRP</h1>
-    <p>Bem-vindo ao portal oficial do servidor.</p>
-    <a id="discordLink" class="discord-button" href="https://discord.gg/" target="_blank">🎮 Entrar no Discord</a>
+    <p>Bem-vindo ao portal oficial da MakZen.</p>
+    <a id="discordLink" class="discord-button" href="https://discord.gg/" target="_blank">🎮 Entrar no server</a>
   </div>
 </section>
 
@@ -73,7 +73,7 @@ main{max-width:1100px;margin:auto;padding:40px 20px}.page{display:none}.page.act
 </section>
 
 <section id="events" class="page">
-  <div class="section-title"><h2>📅 Eventos</h2><p>Confira os próximos eventos do servidor.</p></div>
+  <div class="section-title"><h2>📅 Eventos</h2><p>eventos do servidor.</p></div>
   <div id="eventsContainer" class="events"></div>
 </section>
 </main>
@@ -259,7 +259,7 @@ window.closeVipLogin=function(){document.getElementById("vipLoginModal").classLi
 window.vipLogin=function(){
   const user=document.getElementById("vipUser").value;
   const password=document.getElementById("vipPassword").value;
-  if(user==="MakZenGRP"&&password==="MakZenADMGalaxy"){
+  if(user==="ADM"&&password==="ADM"){
     closeVipLogin();openVipPanel();
   }else document.getElementById("vipError").style.display="block";
 };
